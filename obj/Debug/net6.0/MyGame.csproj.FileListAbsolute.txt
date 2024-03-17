@@ -26,3 +26,4 @@ C:\Work\WorkSpace\Jogos\PingPong\MyGame\obj\Debug\net6.0\ref\MyGame.dll
 C:\Work\WorkSpace\Jogos\PingPong\MyGame\bin\Debug\net6.0\Content\Bola.xnb
 C:\Work\WorkSpace\Jogos\PingPong\MyGame\bin\Debug\net6.0\Content\Mesa.xnb
 C:\Work\WorkSpace\Jogos\PingPong\MyGame\bin\Debug\net6.0\Content\Barra.xnb
+C:\Work\WorkSpace\Jogos\PingPong\MyGame\obj\Debug\net6.0\MyGame.sourcelink.json
