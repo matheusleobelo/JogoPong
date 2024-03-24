@@ -60,8 +60,8 @@ public class Game1 : Game
 
         //score
         _scorePosition = new Vector2((_graphics.PreferredBackBufferWidth - _score.Width) / 2f, 0);
-        _pointA = 10;
-        _pointB = 10;
+        _pointA = 0;
+        _pointB = 0;
         _pointAPosition = new Vector2(_scorePosition.X + 17.5f, 10);
         _pointBPosition = new Vector2(_pointAPosition.X + 80f, 10);
 
