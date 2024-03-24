@@ -24,6 +24,16 @@ public class Game1 : Game
     private Vector2 _bar1Position;
     private Vector2 _bar2Position;
     private float _barSpeed;
+    private SpriteFont font;
+
+    //Score
+    private Texture2D _score;
+    private Vector2 _scorePosition;
+    private int _pointA;
+    private int _pointB;
+    private Vector2 _pointAPosition;
+    private Vector2 _pointBPosition;
+
 
     //random lib
     Random _random;
@@ -48,6 +58,13 @@ public class Game1 : Game
 
         _random = new Random();
 
+        //score
+        _scorePosition = new Vector2((_graphics.PreferredBackBufferWidth - _score.Width) / 2f, 0);
+        _pointA = 10;
+        _pointB = 10;
+        _pointAPosition = new Vector2(_scorePosition.X + 17.5f, 10);
+        _pointBPosition = new Vector2(_pointAPosition.X + 80f, 10);
+
         //ball
         _ballSpeed = 5.0f;
         _ballPosition = new Vector2((_graphics.PreferredBackBufferWidth - _ball.Width) / 2.0f, (_graphics.PreferredBackBufferHeight - _ball.Height) / 2.0f);
@@ -67,6 +84,9 @@ public class Game1 : Game
         _texture = Content.Load<Texture2D>("Mesa");
         _bar = Content.Load<Texture2D>("Barra");
         _ball = Content.Load<Texture2D>("Bola");
+        _score = Content.Load<Texture2D>("Score");
+
+        font = Content.Load<SpriteFont>("File");
 
 
     }
@@ -122,7 +142,7 @@ public class Game1 : Game
         //bar colision 1
         if (_ballPosition.X < _bar.Width)
         {
-            if ((_ballPosition.Y + _ball.Height > _bar1Position.Y) || (_ballPosition.Y < _bar1Position.Y + _bar.Height))
+            if ((_ballPosition.Y + _ball.Height > _bar1Position.Y) && (_ballPosition.Y < _bar1Position.Y + _bar.Height))
             {
                 _ballPosition.X = _bar.Width;
                 _ballDirection = new Vector2(1.0f, GetRandomY());
@@ -134,7 +154,7 @@ public class Game1 : Game
         //bar colision 2
         else if (_ballPosition.X + _ball.Width > _graphics.PreferredBackBufferWidth - _bar.Width)
         {
-            if ((_ballPosition.Y + _ball.Height > _bar2Position.Y) || (_ballPosition.Y < _bar2Position.Y + _bar.Height))
+            if ((_ballPosition.Y + _ball.Height > _bar2Position.Y) && (_ballPosition.Y < _bar2Position.Y + _bar.Height))
             {
                 _ballPosition.X = _graphics.PreferredBackBufferWidth - _bar.Width - _ball.Width;
                 _ballDirection = new Vector2(-1.0f, GetRandomY());
@@ -143,12 +163,20 @@ public class Game1 : Game
         }
 
         //horizontal colision
-        if ((_ballPosition.X + _bar.Width < 0.0f) || (_ballPosition.X > _graphics.PreferredBackBufferWidth))
+        if ((_ballPosition.X + _bar.Width < 0.0f) || (_ballPosition.X > _graphics.PreferredBackBufferWidth - _bar.Width))
         {
+            if ((_ballPosition.X + _bar.Width < 0.0f))
+            {
+                _pointB++;
+            }
+            else
+            {
+                _pointA++;
+            }
             _ballPosition = new Vector2((_graphics.PreferredBackBufferWidth - _ball.Width) / 2.0f, (_graphics.PreferredBackBufferHeight - _ball.Height) / 2.0f);
         }
 
-        //vertical colision
+        //vertical ball colision
         if (_ballPosition.Y < 0)
         {
             _ballPosition.Y = 0.0f;
@@ -172,9 +200,11 @@ public class Game1 : Game
         _spriteBatch.Draw(_ball, _ballPosition, Color.White);
         _spriteBatch.Draw(_bar, _bar1Position, Color.White);
         _spriteBatch.Draw(_bar, _bar2Position, Color.White);
+        _spriteBatch.Draw(_score, _scorePosition, Color.White);
+        _spriteBatch.DrawString(font, _pointA.ToString(), _pointAPosition, Color.Yellow);
+        _spriteBatch.DrawString(font, _pointB.ToString(), _pointBPosition, Color.Yellow);
         _spriteBatch.End();
 
         base.Draw(gameTime);
     }
 }
- 

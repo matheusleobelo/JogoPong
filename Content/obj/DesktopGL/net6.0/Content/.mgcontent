@@ -6,9 +6,13 @@
   <SourceFiles>
     <File>C:/Work/WorkSpace/Jogos/PingPong/MyGame/Content/Barra.png</File>
     <File>C:/Work/WorkSpace/Jogos/PingPong/MyGame/Content/Bola.png</File>
+    <File>C:/Work/WorkSpace/Jogos/PingPong/MyGame/Content/File.spritefont</File>
     <File>C:/Work/WorkSpace/Jogos/PingPong/MyGame/Content/Mesa.png</File>
+    <File>C:/Work/WorkSpace/Jogos/PingPong/MyGame/Content/Score.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
