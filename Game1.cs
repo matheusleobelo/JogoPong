@@ -147,6 +147,7 @@ public class Game1 : Game
                 _ballPosition.X = _bar.Width;
                 _ballDirection = new Vector2(1.0f, GetRandomY());
                 _ballDirection.Normalize();
+                _ballSpeed++;
             }
 
         }
@@ -159,6 +160,8 @@ public class Game1 : Game
                 _ballPosition.X = _graphics.PreferredBackBufferWidth - _bar.Width - _ball.Width;
                 _ballDirection = new Vector2(-1.0f, GetRandomY());
                 _ballDirection.Normalize();
+                _ballSpeed++;
+
             }
         }
 
@@ -168,10 +171,12 @@ public class Game1 : Game
             if ((_ballPosition.X + _bar.Width < 0.0f))
             {
                 _pointB++;
+                _ballSpeed = 5.0f;
             }
             else
             {
                 _pointA++;
+                _ballSpeed = 5.0f;
             }
             _ballPosition = new Vector2((_graphics.PreferredBackBufferWidth - _ball.Width) / 2.0f, (_graphics.PreferredBackBufferHeight - _ball.Height) / 2.0f);
         }
